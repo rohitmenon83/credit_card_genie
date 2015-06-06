@@ -1,0 +1,71 @@
+<!-- Validation failure messages -->
+
+<% if @reward_calculator.errors.any? %>
+  <% @reward_calculator.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<!-- Responsive panel example -->
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Edit Reward Calculator #<%= @reward_calculator.id %></h3>
+      </div>
+      <div class="panel-body">
+        <form action="/update_reward_calculator/<%= @reward_calculator.id %>" method="post" class="form-horizontal">
+          <!-- Hidden input for authenticity token to protect from forgery -->
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+          <!-- Label and input for cash_back_pct -->
+          <div class="form-group">
+            <label for="cash_back_pct" class="col-sm-2 control-label">
+              Cash back pct
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="cash_back_pct" name="cash_back_pct" placeholder="Cash back pct" class="form-control" value="<%= @reward_calculator.cash_back_pct %>">
+            </div>
+          </div>
+
+          <!-- Label and input for credit_card_id -->
+          <div class="form-group">
+            <label for="credit_card_id" class="col-sm-2 control-label">
+              Credit card
+            </label>
+            <div class="col-sm-10">
+              <%= select_tag(:credit_card_id, options_from_collection_for_select(CreditCard.all, :id, :name, @reward_calculator.credit_card_id), :class => "form-control") %>
+            </div>
+          </div>
+
+          <!-- Label and input for reward_id -->
+          <div class="form-group">
+            <label for="reward_id" class="col-sm-2 control-label">
+              Reward
+            </label>
+            <div class="col-sm-10">
+              <%= select_tag(:reward_id, options_from_collection_for_select(Reward.all, :id, :category_name, @reward_calculator.reward_id), :class => "form-control") %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button class="btn btn-warning">
+                Update Reward Calculator
+              </button>
+              or
+              <a href="/reward_calculators/<%= @reward_calculator.id %>">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- End responsive panel example -->

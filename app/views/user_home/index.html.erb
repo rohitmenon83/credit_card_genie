@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+        <div class="panel-body">
+        <form action="/user_home_calculator" class="form-horizontal">
+          <!-- Hidden input for authenticity token to protect from forgery -->
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+       <!-- Label and input for cash_back_pct -->
+          <!-- <div class="form-group">
+            <label for="cash_back_pct" class="col-sm-2 control-label">
+              Cash back pct
+            </label>
+
+          </div> -->
+
+
+          <!-- Label and input for reward_id -->
+          <div class="form-group">
+            <label for="reward_id" class="col-sm-2 control-label">
+              Location Address:
+            </label>
+            <div class="col-sm-4">
+            <input type="text" id="dollar" name="location_address" placeholder="Address" class="form-control">
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="reward_id" class="col-sm-2 control-label">
+              Reward Selector:
+            </label>
+            <div class="col-sm-4">
+
+              <%= select_tag(:user_reward_id, options_from_collection_for_select(Reward.all, :id, :category_name), :class => "form-control") %>
+            </div>
+          </div>
+
+        <div class="form-group">
+            <label for="reward_id" class="col-sm-2 control-label">
+              Purchase Value:
+            </label>
+            <div class="col-sm-4">
+            <input type="number" id="dollar" name="dollar_value" placeholder="$ 0.0" class="form-control">
+
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button class="btn btn-success">
+                Select
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+        </div>
+
+    </div>
+</div>

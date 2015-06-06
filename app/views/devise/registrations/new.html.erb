@@ -1,0 +1,59 @@
+<h2>Register</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="form-group">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, autofocus: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, autofocus: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %>
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :dob %>
+    <%= f.date_select :dob, :start_year => Date.current.year, :end_year => 1940 %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :credit_card_no1 %>
+    <%= f.collection_select :credit_card_no1, CreditCard.all, :id, :name %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :credit_card_no2 %>
+    <%= f.collection_select :credit_card_no2, CreditCard.all, :id, :name %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :credit_card_no3 %>
+    <%= f.collection_select :credit_card_no3, CreditCard.all, :id, :name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
