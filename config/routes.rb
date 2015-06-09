@@ -1,12 +1,30 @@
 Rails.application.routes.draw do
 
+  # Routes for the User_credit_card resource:
+  # CREATE
+  get "/user_credit_cards/new", :controller => "user_credit_cards", :action => "new"
+  post "/calculator", :controller => "user_credit_cards", :action => "calculator"
+  post "/create_new_transaction", :controller => "user_credit_cards", :action => "create"
+
+  # READ
+  get "/user_credit_cards", :controller => "user_credit_cards", :action => "index"
+  get "/user_credit_cards/:id", :controller => "user_credit_cards", :action => "show"
+
+  # UPDATE
+  get "/user_credit_cards/:id/edit", :controller => "user_credit_cards", :action => "edit"
+  post "/update_user_credit_card/:id", :controller => "user_credit_cards", :action => "update"
+
+  # DELETE
+  get "/delete_user_credit_card/:id", :controller => "user_credit_cards", :action => "destroy"
+  #------------------------------
+
 # This is the default Home Page
   devise_scope :user do
     root to: "devise/sessions#new"
   end
 
 # Home Page
-  get "/user_home", :controller => "user_home", :action => "index"
+  # get "/user_home", :controller => "user_home", :action => "index"
 
   get "/user_home_calculator", :controller => "user_home", :action => "calculator"
 
@@ -66,6 +84,8 @@ Rails.application.routes.draw do
   #------------------------------
 
   devise_for :users
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

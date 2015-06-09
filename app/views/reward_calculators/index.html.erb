@@ -15,7 +15,7 @@
 
 <hr>
 
-<div class="row isotope-container">
+<!-- <div class="row isotope-container">
 <% @reward_calculators.each do |reward_calculator| %>
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
     <div class="panel panel-default">
@@ -51,7 +51,55 @@
     </div>
   </div>
 <% end %>
-</div>
+</div> -->
+
+<!-- Trying Table styled layout but search function not working unfortunately -->
+<table class="table table-striped">
+<div class="col-lg-12 isotope-item">
+<div class="row isotope-container">
+  <tr>
+    <th>Credit Card Name</th>
+    <th>Reward Category</th>
+    <th>Cash Back Pct </th>
+    <th colspan="3" class="hello">Actions</th>
+  </tr>
+  <% @reward_calculators.each do |reward_calculator| %>
+  <tr>
+    <td>
+      <%= reward_calculator.credit_card.name %>
+    </td>
+    <td>
+     <%= reward_calculator.reward.category_name %>
+    </td>
+    <td>
+      <%= reward_calculator.cash_back_pct %>
+    </td>
+    <td>
+      <a href="/reward_calculators/<%= reward_calculator.id %>" class="btn btn-primary">
+            <i class="fa fa-search-plus"></i>
+          </a>
+    </td>
+    <td>
+      <a href="/reward_calculators/<%= reward_calculator.id %>/edit" class="btn btn-warning">
+            <i class="fa fa-edit"></i>
+          </a>
+    </td>
+    <td>
+      <a href="/delete_reward_calculator/<%= reward_calculator.id %>" class="btn btn-danger" rel="nofollow">
+            <i class="fa fa-trash-o"></i>
+          </a>
+    </td>
+  </tr>
+  <% end %>
+  </div>
+  </div>
+</table>
+<style>
+.hello{
+  text-align: center;
+}
+</style>
+
 
 <!-- You can ignore the following. It's a quick and dirty example of how to get a Pinterest-style layout with quick search. -->
 <!-- JavaScript for Isotope layout and quicksearch -->

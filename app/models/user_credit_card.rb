@@ -1,10 +1,9 @@
-class RewardCalculator < ActiveRecord::Base
+class UserCreditCard < ActiveRecord::Base
 
-
-validates :cash_back_pct, :presence => true
-validates :credit_card_id, :uniqueness => { :scope => :reward_id }
+#validates :location, :presence => true
+validates :purchase_amt, :presence => true
 
 belongs_to :reward , :class_name => "Reward", :foreign_key => "reward_id"
 belongs_to :credit_card , :class_name => "CreditCard", :foreign_key => "credit_card_id"
-
+belongs_to :user
 end

@@ -1,0 +1,55 @@
+<!-- Responsive panel example-->
+<% if current_user.id == @user_credit_card.user_id %>
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">User Credit Card #<%= @user_credit_card.id %></h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-12">
+            <dl class="dl-horizontal">
+              <dt>Credit card:</dt>
+              <dd><%= @user_credit_card.credit_card.name %></dd>
+
+              <dt>Reward Category:</dt>
+              <dd><%= @user_credit_card.reward.category_name %></dd>
+
+              <dt>Dollar Rewards:</dt>
+              <dd><%= @user_credit_card.dollar_rewards %></dd>
+
+              <dt>Location: </dt>
+              <dd><%= @user_credit_card.location %></dd>
+
+              <dt>Purchase Amount:</dt>
+              <dd><%= @user_credit_card.purchase_amt %></dd>
+
+              <dt>Date of Purchase:</dt>
+              <dd><%= @user_credit_card.created_at %></dd>
+
+            </dl>
+            <div class="btn-group btn-group-justified">
+              <a href="/user_credit_cards" class="btn btn-primary">
+                <i class="fa fa-chevron-left"></i>
+              </a>
+
+              <a href="/user_credit_cards/<%= @user_credit_card.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+
+              <a href="/delete_user_credit_card/<%= @user_credit_card.id %>" class="btn btn-danger" rel="nofollow">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% else %>
+<a href="/user_credit_cards"> <b> Go Back! Nice Try! </b> </a>
+<% end %>
+
+<!-- End responsive panel example -->

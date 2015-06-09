@@ -40,6 +40,7 @@ end
   c=RewardCalculator.where({:reward_id => @a, :credit_card_id => y})
   d=RewardCalculator.where({:reward_id => @a, :credit_card_id => z})
 
+  #Obtaining the users cash back pct and credit card if for each of his/her credit card
 b.each do |b|
   @j=b.cash_back_pct
   @l=b.credit_card_id
@@ -55,9 +56,13 @@ d.each do |d|
   @n=d.credit_card_id
 end
 
+#Determining the Max reward %
 @max= [@i,@j,@k].max
+
+#Determining the estimated rewards
 @est_rewards = (@dollarvalue.to_f * @max.to_f).round(2)
 
+#Returning the best credit card based on the rewards criterion given a category
 @bestcreditcard=RewardCalculator.where({:cash_back_pct => @max, :reward_id => @a, :credit_card_id => [current_user.credit_card_no1, current_user.credit_card_no2,current_user.credit_card_no3]})
 
   end

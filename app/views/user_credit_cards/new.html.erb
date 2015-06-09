@@ -1,0 +1,77 @@
+<!-- Validation failure messages -->
+
+<% if @user_credit_card.errors.any? %>
+  <% @user_credit_card.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<!-- Responsive panel example -->
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Add a new Transaction</h3>
+      </div>
+      <div class="panel-body">
+        <form action="/calculator" method="post" class="form-horizontal">
+          <!-- Hidden input for authenticity token to protect from forgery -->
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+          <!-- Label and input for user_id -->
+          <div class="form-group">
+            <div class="col-sm-10">
+              <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
+            </div>
+          </div>
+
+        <!-- Label and input for location -->
+          <div class="form-group">
+            <label for="location" class="col-sm-2 control-label">
+              Location:
+            </label>
+            <div class="col-sm-10">
+              <textarea id="location" name="location" placeholder="Location" class="form-control" rows="3"><%= @user_credit_card.location %></textarea>
+            </div>
+          </div>
+
+          <!-- Label and input for reward_id -->
+          <div class="form-group">
+            <label for="reward_id" class="col-sm-2 control-label">
+              Reward:
+            </label>
+            <div class="col-sm-10">
+            <%= select_tag(:user_reward_id, options_from_collection_for_select(Reward.all, :id, :category_name), :class => "form-control") %>
+            </div>
+          </div>
+          <!-- Label and input for purchase_amt -->
+          <div class="form-group">
+            <label for="purchase_amt" class="col-sm-2 control-label">
+              Purchase Amount:
+            </label>
+            <div class="col-sm-10">
+              <input type="number" id="purchase_amt" name="purchase_amt" placeholder="$0.0" class="form-control" value="$0.0">
+            </div>
+          </div>
+          <!-- Label and input for purchase_amt -->
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button class="btn btn-success">
+                Select
+              </button>
+              or
+              <a href="/user_credit_cards">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- End responsive panel example -->

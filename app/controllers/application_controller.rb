@@ -8,14 +8,14 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:first_name, :last_name, :email, :password, :password_confirmation, :dob,:credit_card_no1, :credit_card_no2, :credit_card_no3) }
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:first_name, :last_name, :email, :password, :password_confirmation, :dob, :credit_card_no1, :credit_card_no2, :credit_card_no3) }
 
-  devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:first_name, :last_name, :password, :password_confirmation,:current_password, :dob, :credit_card_no1, :credit_card_no2, :credit_card_no3) }
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:first_name, :last_name, :password, :password_confirmation,:current_password, :dob, :is_female, :credit_card_no1, :credit_card_no2, :credit_card_no3) }
 
   end
 
   def after_sign_in_path_for(user)
-    "/user_home"
+    "/user_credit_cards"
   end
 
 
