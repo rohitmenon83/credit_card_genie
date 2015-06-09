@@ -1,4 +1,4 @@
-
+<!-- Decision Engine -->
 <div class="panel panel-default">
   <div class="panel-body">
     <h2> Hello, <%= current_user.first_name %>!</h2>
@@ -24,7 +24,8 @@
       <input type="hidden" id="user_id" name="user_id" value= "<%= current_user.id %>" class="form-control" >
       <input type="hidden" id="reward_id" name="reward_id" value= "<%= @a %>" class="form-control" >
       <input type="hidden" id="purchase_amt" name="purchase_amt" value= "<%= @dollarvalue %>" class="form-control" >
-      <input type="hidden" id="location" name="location" value= "<%= @street_address %>" class="form-control" >
+      <input type="hidden" id="address" name="address" value= "<%= @street_address %>" class="form-control" >
+      <input type="hidden" id="location" name="location" value= "<%= @location %>" class="form-control" >
 
       <button class="btn btn-success">
         Save This Transaction

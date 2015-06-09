@@ -36,11 +36,14 @@
           <dt>Location:</dt>
           <dd><%= user_credit_card.location %></dd>
 
+          <dt>Address:</dt>
+          <dd><%= user_credit_card.address %></dd>
+
           <dt>Purchase Amount:</dt>
           <dd><%= user_credit_card.purchase_amt %></dd>
 
           <dt>Date of Purchase:</dt>
-          <dd><%= user_credit_card.created_at %></dd>
+          <dd><%= user_credit_card.created_at.strftime("%B %e, %Y at %l:%M%P") %></dd>
 
         </dl>
         <div class="btn-group btn-group-justified">

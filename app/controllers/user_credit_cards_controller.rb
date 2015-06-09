@@ -24,7 +24,8 @@ class UserCreditCardsController < ApplicationController
   def calculator
      # Using Google Map API
 
-    @street_address = params[:location]
+    @location = params[:location]
+    @street_address = params[:address]
     url_safe_street_address = URI.encode(@street_address)
     @x=@street_address.blank?
 
@@ -99,6 +100,7 @@ n=0
     @user_credit_card.reward_id = params[:reward_id]
     @user_credit_card.dollar_rewards = params[:dollar_rewards]
     @user_credit_card.location = params[:location]
+    @user_credit_card.address = params[:address]
     @user_credit_card.purchase_amt = params[:purchase_amt]
     @user_credit_card.save
 

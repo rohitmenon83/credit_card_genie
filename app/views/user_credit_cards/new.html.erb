@@ -35,7 +35,17 @@
               Location:
             </label>
             <div class="col-sm-10">
-              <textarea id="location" name="location" placeholder="Location" class="form-control" rows="3"><%= @user_credit_card.location %></textarea>
+              <input type="text" id="location" name="location" placeholder="Location" class="form-control" value="<%= @user_credit_card.location %>">
+            </div>
+          </div>
+
+        <!-- Label and input for Address -->
+          <div class="form-group">
+            <label for="address" class="col-sm-2 control-label">
+              Address:
+            </label>
+            <div class="col-sm-10">
+              <textarea id="address" name="address" placeholder="Address" class="form-control" rows="3"><%= @user_credit_card.address %></textarea>
             </div>
           </div>
 
