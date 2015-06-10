@@ -17,16 +17,19 @@
               <dd><%= @user_credit_card.reward.category_name %></dd>
 
               <dt>Dollar Rewards:</dt>
-              <dd><%= @user_credit_card.dollar_rewards %></dd>
+              <dd>$<%= @user_credit_card.dollar_rewards %></dd>
 
               <dt>Location: </dt>
               <dd><%= @user_credit_card.location %></dd>
 
+              <dt>Address: </dt>
+              <dd><%= @user_credit_card.address %></dd>
+
               <dt>Purchase Amount:</dt>
-              <dd><%= @user_credit_card.purchase_amt %></dd>
+              <dd>$<%= @user_credit_card.purchase_amt %></dd>
 
               <dt>Date of Purchase:</dt>
-              <dd><%= @user_credit_card.created_at %></dd>
+              <dd><%= @user_credit_card.created_at.in_time_zone("Central Time (US & Canada)").strftime("%B %e, %Y at %l:%M%P") %></dd>
 
             </dl>
             <div class="btn-group btn-group-justified">
@@ -49,7 +52,7 @@
   </div>
 </div>
 <% else %>
-<a href="/user_credit_cards"> <b> Go Back! Nice Try! </b> </a>
+<a href="/user_credit_cards"> <b> Unauthorized User! Please Go Back! </b> </a>
 <% end %>
 
 <!-- End responsive panel example -->

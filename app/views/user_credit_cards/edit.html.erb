@@ -10,7 +10,7 @@
 <% end %>
 
 <!-- Responsive panel example -->
-
+<% if current_user.id == @user_credit_card.user_id %>
 <div class="row">
   <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
     <div class="panel panel-default">
@@ -23,64 +23,54 @@
           <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
           <!-- Label and input for user_id -->
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="user_id" class="col-sm-2 control-label">
               User
             </label>
-            <div class="col-sm-10">
-              <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @user_credit_card.user_id %>">
-            </div>
-          </div>
+            <div class="col-sm-10"> -->
+            <!--   <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @user_credit_card.user_id %>"> -->
+           <!--  </div>
+          </div> -->
 
           <!-- Label and input for credit_card_id -->
-          <div class="form-group">
-            <label for="credit_card_id" class="col-sm-2 control-label">
-              Credit card
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="credit_card_id" name="credit_card_id" placeholder="Credit card" class="form-control" value="<%= @user_credit_card.credit_card_id %>">
-            </div>
-          </div>
+          <input type="hidden" id="credit_card_id" name="credit_card_id" placeholder="Credit card" class="form-control" value="<%= @user_credit_card.credit_card_id %>">
+
 
           <!-- Label and input for reward_id -->
-          <div class="form-group">
-            <label for="reward_id" class="col-sm-2 control-label">
-              Reward
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="reward_id" name="reward_id" placeholder="Reward" class="form-control" value="<%= @user_credit_card.reward_id %>">
-            </div>
-          </div>
+              <input type="hidden" id="reward_id" name="reward_id" placeholder="Reward" class="form-control" value="<%= @user_credit_card.reward_id %>">
 
           <!-- Label and input for dollar_rewards -->
-          <div class="form-group">
-            <label for="dollar_rewards" class="col-sm-2 control-label">
-              Dollar rewards
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="dollar_rewards" name="dollar_rewards" placeholder="Dollar rewards" class="form-control" value="<%= @user_credit_card.dollar_rewards %>">
-            </div>
-          </div>
+              <input type="hidden" id="dollar_rewards" name="dollar_rewards" placeholder="Dollar rewards" class="form-control" value="<%= @user_credit_card.dollar_rewards %>">
+
 
           <!-- Label and input for location -->
           <div class="form-group">
             <label for="location" class="col-sm-2 control-label">
-              Location
+              Location:
             </label>
             <div class="col-sm-10">
               <textarea id="location" name="location" placeholder="Location" class="form-control" rows="3"><%= @user_credit_card.location %></textarea>
             </div>
           </div>
 
-          <!-- Label and input for purchase_amt -->
           <div class="form-group">
-            <label for="purchase_amt" class="col-sm-2 control-label">
-              Purchase amt
+            <label for="location" class="col-sm-2 control-label">
+              Address:
             </label>
             <div class="col-sm-10">
-              <input type="text" id="purchase_amt" name="purchase_amt" placeholder="Purchase amt" class="form-control" value="<%= @user_credit_card.purchase_amt %>">
+              <textarea id="address" name="address" placeholder="Location" class="form-control" rows="3"><%= @user_credit_card.address %></textarea>
             </div>
           </div>
+
+          <!-- Label and input for purchase_amt -->
+          <!-- <div class="form-group">
+            <label for="purchase_amt" class="col-sm-2 control-label">
+              Purchase amt
+            </label> -->
+            <!-- <div class="col-sm-10"> -->
+              <input type="hidden" id="purchase_amt" name="purchase_amt" placeholder="Purchase amt" class="form-control" value="<%= @user_credit_card.purchase_amt %>">
+           <!--  </div>
+          </div> -->
 
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
@@ -96,6 +86,9 @@
     </div>
   </div>
 </div>
+<% else %>
+<a href="/user_credit_cards"> <b> Unauthorized User! Please Go Back! </b> </a>
+<% end %>
 
 
 <!-- End responsive panel example -->

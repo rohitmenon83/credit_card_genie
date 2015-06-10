@@ -1,25 +1,28 @@
-<!-- Decision Engine -->
-<div class="panel panel-default">
-  <div class="panel-body">
-    <h2> Hello, <%= current_user.first_name %>!</h2>
-    <h3> The best credit card to use for your "<%= Reward.find_by({ :id => @a}).category_name %>" purchase is: </h3>
-     <%= select_tag(:credit_card_id, options_from_collection_for_select(@selected_cards, :id, :name), :class => "form-control") %> </br>
-    <h3>Your estimated rewards by using the suggested credit card for  your $<%= @dollarvalue %> purchase is: $<%= @est_rewards %> </h3>
-
-  <!-- Filling the Form -->
+<!-- Filling the Form -->
 
      <form action="/create_new_transaction" method="post" class="form-horizontal">
           <!-- Hidden input for authenticity token to protect from forgery -->
           <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
+
+<!-- Decision Engine -->
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h3> Hello, <%= current_user.first_name %>! </h3>
+    <div class="col-sm-10">
+    <p> The best credit card to use for your <span> <b>"<%= Reward.find_by({ :id => @a}).category_name %>"</b></span> purchase is: </p>
+    </div>
+    <div class="col-sm-10">
+     <%= select_tag(:credit_card_id, options_from_collection_for_select(@selected_cards.order("name DESC"), :id, :name, @user_credit_card.credit_card_id), :class => "form-control") %> </br>
+     </div>
+     <div class ="col-sm-10">
+    <p>Your estimated rewards by using the suggested credit card for  your<span><b> $<%= @dollarvalue %> </b> </span> purchase is: <span> <b> $<%= @est_rewards %>.</b></span> </p>
+    </div>
+
   <div class="form-group">
     <label for="best_credit_card" class="col-sm-4 control-label">
       <div class="col-sm-10">
-        <% @bestcreditcard.each do |thing| %>
 
-          <input type="hidden" id="credit_card_name" name="credit_card_name" value= "<%= thing.credit_card.name %>" class="form-control" >
-          <input type="hidden" id="credit_card_id" name="credit_card_id" value= "<%= thing.credit_card.id %>" class="form-control" >
-        <% end %>
       <input type="hidden" id="dollar_rewards" name="dollar_rewards" value= "<%= @est_rewards %>" class="form-control" >
       <input type="hidden" id="user_id" name="user_id" value= "<%= current_user.id %>" class="form-control" >
       <input type="hidden" id="reward_id" name="reward_id" value= "<%= @a %>" class="form-control" >

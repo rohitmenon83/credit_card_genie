@@ -1,20 +1,21 @@
 Rails.application.routes.draw do
 
   # Routes for the User_credit_card resource:
-  # CREATE
+
+  # CREATE (Completed)
   get "/user_credit_cards/new", :controller => "user_credit_cards", :action => "new"
   post "/calculator", :controller => "user_credit_cards", :action => "calculator"
   post "/create_new_transaction", :controller => "user_credit_cards", :action => "create"
 
-  # READ
+  # READ (Completed)
   get "/user_credit_cards", :controller => "user_credit_cards", :action => "index"
   get "/user_credit_cards/:id", :controller => "user_credit_cards", :action => "show"
 
-  # UPDATE
+  # UPDATE (Completed)
   get "/user_credit_cards/:id/edit", :controller => "user_credit_cards", :action => "edit"
   post "/update_user_credit_card/:id", :controller => "user_credit_cards", :action => "update"
 
-  # DELETE
+  # DELETE (Completed)
   get "/delete_user_credit_card/:id", :controller => "user_credit_cards", :action => "destroy"
   #------------------------------
 
@@ -23,15 +24,17 @@ Rails.application.routes.draw do
     root to: "devise/sessions#new"
   end
 
-# Home Page
+# Home Page (Deactivate these routes)
   # get "/user_home", :controller => "user_home", :action => "index"
 
-  get "/user_home_calculator", :controller => "user_home", :action => "calculator"
+  # get "/user_home_calculator", :controller => "user_home", :action => "calculator"
 
   get "/blog_news", :controller => "blog_news", :action => "show"
 
   get "/contact_us", :controller => "contact_us", :action => "show"
 
+
+  # Following are admin related routes
   # Routes for the Reward_calculator resource:
   # CREATE
   get "/reward_calculators/new", :controller => "reward_calculators", :action => "new"

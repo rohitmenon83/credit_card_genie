@@ -20,7 +20,7 @@
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">User Credit Card #<%= user_credit_card.id %></h3>
+        <h3 class="panel-title">Transaction ID #<%= user_credit_card.id %></h3>
       </div>
       <div class="panel-body">
         <dl>
@@ -31,7 +31,7 @@
           <dd><%= user_credit_card.reward.category_name %></dd>
 
           <dt>Dollar Rewards:</dt>
-          <dd><%= user_credit_card.dollar_rewards %></dd>
+          <dd>$<%= user_credit_card.dollar_rewards %></dd>
 
           <dt>Location:</dt>
           <dd><%= user_credit_card.location %></dd>
@@ -40,10 +40,10 @@
           <dd><%= user_credit_card.address %></dd>
 
           <dt>Purchase Amount:</dt>
-          <dd><%= user_credit_card.purchase_amt %></dd>
+          <dd>$<%= user_credit_card.purchase_amt %></dd>
 
           <dt>Date of Purchase:</dt>
-          <dd><%= user_credit_card.created_at.strftime("%B %e, %Y at %l:%M%P") %></dd>
+          <dd><%= user_credit_card.created_at.in_time_zone("Central Time (US & Canada)").strftime("%B %e, %Y at %l:%M%P") %></dd>
 
         </dl>
         <div class="btn-group btn-group-justified">

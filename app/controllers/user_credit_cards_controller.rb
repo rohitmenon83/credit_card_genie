@@ -10,7 +10,6 @@ class UserCreditCardsController < ApplicationController
   end
 
 # Only Gives access to current user in the View Action
-
   def show
     @user_credit_card = UserCreditCard.find(params[:id])
  end
@@ -22,8 +21,10 @@ class UserCreditCardsController < ApplicationController
 
 # Logic for Selecting right credit card
   def calculator
-     # Using Google Map API
 
+    @user_credit_card = UserCreditCard.new
+
+     # Using Google Map API
     @location = params[:location]
     @street_address = params[:address]
     url_safe_street_address = URI.encode(@street_address)
@@ -42,7 +43,7 @@ class UserCreditCardsController < ApplicationController
 
   # Collecting Data from the User
   @a = params[:user_reward_id]
-  @dollarvalue= (params[:purchase_amt]).to_f.round(1)
+  @dollarvalue= (params[:purchase_amt])
 
   # Retrieving the user address's
   x= current_user.credit_card_no1
@@ -79,7 +80,8 @@ end
 #Returning the best credit card based on the rewards criterion given a category
 @bestcreditcard=RewardCalculator.where({:cash_back_pct => @max, :reward_id => @a, :credit_card_id => [current_user.credit_card_no1, current_user.credit_card_no2,current_user.credit_card_no3]})
 
-#Calculating Select Card List
+#Calculating Select Card List. It is useful if more than one card shows up
+
 array=[]
 n=0
 @bestcreditcard.each do |zebra|
@@ -104,8 +106,11 @@ n=0
     @user_credit_card.purchase_amt = params[:purchase_amt]
     @user_credit_card.save
 
-      redirect_to "/user_credit_cards", :notice => "Transaction created successfully."
-
+    if @user_credit_card.save
+    redirect_to "/user_credit_cards", :notice => "Transaction created successfully."
+    else
+    render '/user_credit_cards/new'
+    end
   end
 
   def edit
@@ -115,27 +120,37 @@ n=0
   def update
     @user_credit_card = UserCreditCard.find(params[:id])
 
-    @user_credit_card.user_id = params[:user_id]
+    @user_credit_card.user_id = current_user.id
     @user_credit_card.credit_card_id = params[:credit_card_id]
     @user_credit_card.reward_id = params[:reward_id]
     @user_credit_card.dollar_rewards = params[:dollar_rewards]
     @user_credit_card.location = params[:location]
+    @user_credit_card.address = params[:address]
     @user_credit_card.purchase_amt = params[:purchase_amt]
 
     if @user_credit_card.save
-      redirect_to "/user_credit_cards", :notice => "User credit card updated successfully."
+      redirect_to "/user_credit_cards", :notice => "Transaction updated successfully."
     else
-      render 'edit'
+      render 'new'
     end
   end
 
-# Delete selected transaction
+# Delete selected transaction (Complete, added validation for the current user)
 
   def destroy
+
+
     @user_credit_card = UserCreditCard.find(params[:id])
+
+    if current_user.id == @user_credit_card.user_id
 
     @user_credit_card.destroy
 
-    redirect_to "/user_credit_cards", :notice => "User credit card deleted."
+    redirect_to "/user_credit_cards", :notice => "User Transaction deleted."
+  else
+    redirect_to "/user_credit_cards", :notice => "Unauthorized User!"
   end
+end
+
+
 end

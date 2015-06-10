@@ -54,12 +54,12 @@
   </div> -->
 
   <div class="form-group">
-    <%= f.radio_button :is_female, '1' %>
+    <%= f.radio_button :is_female, '1', checked: f.object.is_female %>
     <%= f.label :is_female, "Female" %>
     </div>
 
     <div class= "form-group">
-    <%= f.radio_button :is_female, '0' %>
+    <%= f.radio_button :is_female, '0', checked: !f.object.is_female %>
     <%= f.label :is_female, "Male" %>
     </div>
 

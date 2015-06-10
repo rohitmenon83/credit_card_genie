@@ -55,16 +55,16 @@
               Reward:
             </label>
             <div class="col-sm-10">
-            <%= select_tag(:user_reward_id, options_from_collection_for_select(Reward.all, :id, :category_name), :class => "form-control") %>
+            <%= select_tag(:user_reward_id, options_from_collection_for_select(Reward.all, :id, :category_name,@user_credit_card.reward_id), :class => "form-control") %>
             </div>
           </div>
           <!-- Label and input for purchase_amt -->
           <div class="form-group">
-            <label for="purchase_amt" class="col-sm-2 control-label">
+            <label for="Purchase Amount" class="col-sm-2 control-label">
               Purchase Amount:
             </label>
             <div class="col-sm-10">
-              <input type="number" id="purchase_amt" name="purchase_amt" placeholder="$0.0" class="form-control" value="$0.0">
+              <input type="number" id="purchase_amt" name="purchase_amt" placeholder="0.0" class="form-control" step="0.01" min="0">
             </div>
           </div>
           <!-- Label and input for purchase_amt -->
