@@ -35,24 +35,24 @@ Rails.application.routes.draw do
 
 
   # Following are admin related routes
-  # Routes for the Reward_calculator resource:
-  # CREATE
-  get "/reward_calculators/new", :controller => "reward_calculators", :action => "new"
-  post "/create_reward_calculator", :controller => "reward_calculators", :action => "create"
+  # Routes for the Reward_calculator resource: Only read allowed.
+  # CREATE (Deactivating, to prevent users from creating)
+  # get "/reward_calculators/new", :controller => "reward_calculators", :action => "new"
+  # post "/create_reward_calculator", :controller => "reward_calculators", :action => "create"
 
   # READ
   get "/reward_calculators", :controller => "reward_calculators", :action => "index"
   get "/reward_calculators/:id", :controller => "reward_calculators", :action => "show"
 
-  # UPDATE
-  get "/reward_calculators/:id/edit", :controller => "reward_calculators", :action => "edit"
-  post "/update_reward_calculator/:id", :controller => "reward_calculators", :action => "update"
+  # UPDATE (Deactivated, to prevent users from updating)
+  # get "/reward_calculators/:id/edit", :controller => "reward_calculators", :action => "edit"
+  # post "/update_reward_calculator/:id", :controller => "reward_calculators", :action => "update"
 
-  # DELETE
-  get "/delete_reward_calculator/:id", :controller => "reward_calculators", :action => "destroy"
+  # DELETE (Deactivated, to prevent user modification)
+  # get "/delete_reward_calculator/:id", :controller => "reward_calculators", :action => "destroy"
   #------------------------------
 
-  # Routes for the Credit_card resource:
+  # Routes for the Credit_card resource: Not deactivating as routes not displayed.
   # CREATE
   get "/credit_cards/new", :controller => "credit_cards", :action => "new"
   post "/create_credit_card", :controller => "credit_cards", :action => "create"
@@ -69,7 +69,7 @@ Rails.application.routes.draw do
   get "/delete_credit_card/:id", :controller => "credit_cards", :action => "destroy"
   #------------------------------
 
-  # Routes for the Reward resource:
+  # Routes for the Reward resource: Not deactivating as routes not displayed.
   # CREATE
   get "/rewards/new", :controller => "rewards", :action => "new"
   post "/create_reward", :controller => "rewards", :action => "create"

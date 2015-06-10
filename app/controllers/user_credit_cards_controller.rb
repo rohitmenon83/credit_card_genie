@@ -80,7 +80,7 @@ end
 #Returning the best credit card based on the rewards criterion given a category
 @bestcreditcard=RewardCalculator.where({:cash_back_pct => @max, :reward_id => @a, :credit_card_id => [current_user.credit_card_no1, current_user.credit_card_no2,current_user.credit_card_no3]})
 
-#Calculating Select Card List. It is useful if more than one card shows up
+#Calculating Select Card List. It is useful if more than one card shows up based on decision criterion
 
 array=[]
 n=0

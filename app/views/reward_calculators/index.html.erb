@@ -1,7 +1,7 @@
 <div class="page-header">
   <h1>
-    Reward calculators
-    <a href="/reward_calculators/new" class="btn btn-lg btn-success"><i class="fa fa-plus"></i></a>
+  Credit Card Reward List
+    <!-- <a href="/reward_calculators/new" class="btn btn-lg btn-success"><i class="fa fa-plus"></i></a> -->
   </h1>
 </div>
 
@@ -15,7 +15,7 @@
 
 <hr>
 
-<!-- <div class="row isotope-container">
+ <div class="row isotope-container">
 <% @reward_calculators.each do |reward_calculator| %>
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
     <div class="panel panel-default">
@@ -39,29 +39,29 @@
             <i class="fa fa-search-plus"></i>
           </a>
 
-          <a href="/reward_calculators/<%= reward_calculator.id %>/edit" class="btn btn-warning">
+          <!-- a href="/reward_calculators/<%= reward_calculator.id %>/edit" class="btn btn-warning">
             <i class="fa fa-edit"></i>
           </a>
 
           <a href="/delete_reward_calculator/<%= reward_calculator.id %>" class="btn btn-danger" rel="nofollow">
-            <i class="fa fa-trash-o"></i>
+            <i class="fa fa-trash-o"></i> -->
           </a>
         </div>
       </div>
     </div>
   </div>
 <% end %>
-</div> -->
+</div>
 
 <!-- Trying Table styled layout but search function not working unfortunately -->
-<table class="table table-striped">
+<!-- <table class="table table-striped">
 <div class="col-lg-12 isotope-item">
 <div class="row isotope-container">
   <tr>
     <th>Credit Card Name</th>
     <th>Reward Category</th>
     <th>Cash Back Pct </th>
-    <th colspan="3" class="hello">Actions</th>
+    <th colspan="1">Actions</th>
   </tr>
   <% @reward_calculators.each do |reward_calculator| %>
   <tr>
@@ -79,7 +79,9 @@
             <i class="fa fa-search-plus"></i>
           </a>
     </td>
-    <td>
+
+    <!-- Deactivating these features for this database. Treating this like an admin type database. -->
+    <!-- <td>
       <a href="/reward_calculators/<%= reward_calculator.id %>/edit" class="btn btn-warning">
             <i class="fa fa-edit"></i>
           </a>
@@ -88,12 +90,12 @@
       <a href="/delete_reward_calculator/<%= reward_calculator.id %>" class="btn btn-danger" rel="nofollow">
             <i class="fa fa-trash-o"></i>
           </a>
-    </td>
+    </td> -->
   </tr>
   <% end %>
   </div>
   </div>
-</table>
+</table> -->
 <style>
 .hello{
   text-align: center;
